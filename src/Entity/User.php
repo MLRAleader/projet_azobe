@@ -111,6 +111,36 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=StatutJuridique::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $statut_juridique;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Province::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $province;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    private $passwordConfirm;
+
+    public function __construct()
+    {
+        //$this->$createdAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -370,5 +400,61 @@ class User implements UserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    public function getStatutJuridique(): ?StatutJuridique
+    {
+        return $this->statut_juridique;
+    }
+
+    public function setStatutJuridique(?StatutJuridique $statut_juridique): self
+    {
+        $this->statut_juridique = $statut_juridique;
+
+        return $this;
+    }
+
+    public function getVille(): ?Ville
+    {
+        return $this->ville;
+    }
+
+    public function setVille(?Ville $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getProvince(): ?Province
+    {
+        return $this->province;
+    }
+
+    public function setProvince(?Province $province): self
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getPasswordConfirm(): ?string{
+        return $this->passwordConfirm;
+    }
+
+    public function setPasswordConfirm(string $passwordConfirm){
+        $this->passwordConfirm = $passwordConfirm;
     }
 }

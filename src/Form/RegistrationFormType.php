@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Province;
+use App\Entity\StatutJuridique;
 use App\Entity\User;
+use App\Entity\Ville;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -26,12 +29,16 @@ class RegistrationFormType extends AbstractType
             ->add('social_objet')
             ->add('principal_activite')
             ->add('denomination')
+            ->add('statut_juridique',  StatutJuridique::class)
+            ->add('ville', Ville::class)
+            ->add('province', Province::class)
             ->add('sigle')
             ->add('numero_recepisse')
             ->add('date_creation')
             ->add('adresse')
             ->add('site_internet')
             ->add('lien_facebook')
+            ->add('passwordConfirm')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
