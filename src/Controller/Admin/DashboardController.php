@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Province;
-use App\Entity\StatutJuridique;
-use App\Entity\Ville;
+
+use App\Entity\GroupeActivite;
+use App\Entity\ThemeActivite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -30,8 +30,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Statut juridique', 'fas fa-balance-scale-right', StatutJuridique::class);
-        yield MenuItem::linkToCrud('Ville', 'fas fa-city', Ville::class);
-        yield MenuItem::linkToCrud('Province', 'fas fa-chart-area', Province::class);
+        yield MenuItem::linkToCrud('Groupe d\'activité', 'fas fa-layer-group', GroupeActivite::class);
+        yield MenuItem::linkToCrud('Thème d\'activité', 'fas fa-list', ThemeActivite::class);
+        
     }
 }

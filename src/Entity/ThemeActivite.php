@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\StatutJuridiqueRepository;
+use App\Repository\ThemeActiviteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=StatutJuridiqueRepository::class)
+ * @ORM\Entity(repositoryClass=ThemeActiviteRepository::class)
  */
-class StatutJuridique
+class ThemeActivite
 {
     /**
      * @ORM\Id
@@ -24,10 +24,20 @@ class StatutJuridique
      */
     private $name;
 
+   
+
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="statut_juridique")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="themeActivite")
      */
     private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=GroupeActivite::class, inversedBy="themeActivites")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $groupeActivite;
+
+   
 
     public function __construct()
     {
@@ -51,6 +61,10 @@ class StatutJuridique
         return $this;
     }
 
+   
+
+   
+
     /**
      * @return Collection|User[]
      */
@@ -63,7 +77,7 @@ class StatutJuridique
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->setStatutJuridique($this);
+            $user->setThemeActivite($this);
         }
 
         return $this;
@@ -73,11 +87,29 @@ class StatutJuridique
     {
         if ($this->users->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($user->getStatutJuridique() === $this) {
-                $user->setStatutJuridique(null);
+            if ($user->getThemeActivite() === $this) {
+                $user->setThemeActivite(null);
             }
         }
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getGroupeActivite(): ?GroupeActivite
+    {
+        return $this->groupeActivite;
+    }
+
+    public function setGroupeActivite(?GroupeActivite $groupeActivite): self
+    {
+        $this->groupeActivite = $groupeActivite;
+
+        return $this;
+    }
+    
 }

@@ -18,8 +18,9 @@
        
         {{form_row(registrationForm.date_creation)}}
         {{form_row(registrationForm.adresse)}}
-        {{form_row(registrationForm.ville)}}
+        
         {{form_row(registrationForm.province)}}
+        {{form_row(registrationForm.ville)}}
         {{ form_row(registrationForm.lastname) }}
         {{form_row(registrationForm.firstname)}}
         {{form_row(registrationForm.phone_number)}}
@@ -27,7 +28,9 @@
         {{ form_row(registrationForm.email) }}
         {{form_row(registrationForm.mail_contact2)}}
         {{form_row(registrationForm.social_objet)}}
-        {{form_row(registrationForm.principal_activite)}}
+        {{form_row(registrationForm.description_activite)}}
+        {{form_row(registrationForm.groupe_activite)}}
+        {{form_row(registrationForm.themeActivite)}}
         {{form_row(registrationForm.site_internet)}}
         {{form_row(registrationForm.lien_facebook)}}
        
@@ -35,6 +38,7 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+        {{form_row(registrationForm.passwordConfirm)}}
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>

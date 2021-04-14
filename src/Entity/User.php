@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -66,11 +68,7 @@ class User implements UserInterface
      */
     private $social_objet;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $principal_activite;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -111,23 +109,6 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=StatutJuridique::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $statut_juridique;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $ville;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Province::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $province;
 
     /**
      * @ORM\Column(type="datetime")
@@ -136,9 +117,43 @@ class User implements UserInterface
 
     private $passwordConfirm;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $statut_juridique;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $province;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description_activite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="GroupeActivite")
+     * @Assert\NotBlank()
+     */
+    private $groupe_activite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ThemeActivite::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $themeActivite;
+
+    
+
     public function __construct()
     {
-        //$this->$createdAt = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -294,18 +309,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPrincipalActivite(): ?string
-    {
-        return $this->principal_activite;
-    }
-
-    public function setPrincipalActivite(string $principal_activite): self
-    {
-        $this->principal_activite = $principal_activite;
-
-        return $this;
-    }
-
     public function getDenomination(): ?string
     {
         return $this->denomination;
@@ -402,41 +405,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getStatutJuridique(): ?StatutJuridique
-    {
-        return $this->statut_juridique;
-    }
-
-    public function setStatutJuridique(?StatutJuridique $statut_juridique): self
-    {
-        $this->statut_juridique = $statut_juridique;
-
-        return $this;
-    }
-
-    public function getVille(): ?Ville
-    {
-        return $this->ville;
-    }
-
-    public function setVille(?Ville $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getProvince(): ?Province
-    {
-        return $this->province;
-    }
-
-    public function setProvince(?Province $province): self
-    {
-        $this->province = $province;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
@@ -457,4 +425,78 @@ class User implements UserInterface
     public function setPasswordConfirm(string $passwordConfirm){
         $this->passwordConfirm = $passwordConfirm;
     }
+
+    public function getStatutJuridique(): ?string
+    {
+        return $this->statut_juridique;
+    }
+
+    public function setStatutJuridique(string $statut_juridique): self
+    {
+        $this->statut_juridique = $statut_juridique;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getProvince(): ?string
+    {
+        return $this->province;
+    }
+
+    public function setProvince(string $province): self
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    public function getDescriptionActivite(): ?string
+    {
+        return $this->description_activite;
+    }
+
+    public function setDescriptionActivite(string $description_activite): self
+    {
+        $this->description_activite = $description_activite;
+
+        return $this;
+    }
+
+    public function getGroupeActivite(): ?string
+    {
+        return $this->groupe_activite;
+    }
+
+    public function setGroupeActivite(string $groupe_activite): self
+    {
+        $this->groupe_activite = $groupe_activite;
+
+        return $this;
+    }
+
+    public function getThemeActivite(): ?ThemeActivite
+    {
+        return $this->themeActivite;
+    }
+
+    public function setThemeActivite(?ThemeActivite $themeActivite): self
+    {
+        $this->themeActivite = $themeActivite;
+
+        return $this;
+    }
+
+    
 }
