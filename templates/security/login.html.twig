@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<!--Code de la partie connexion-->
+
+<br>
+<div class="row">
+				<div class="col-lg-5 mx-auto">
+					<div class="ts-grid-box" id="ts-grid-box">
+                    <div class="message-flash">
+                         {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                    </div>
+						<div class="login-page">
+							<h6 class="log-sign-title text-center mb-20 inscription_terms">Se connecter ou <a href="{{path('app_register')}}" class="blue-color">Créer un compte ?</a></h6>
+
+							<div class="row" id="connect">
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<a href="#" class="btn btn-lg btn-primary color-fb btn-fb btn-block">Facebook</a>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<a href="#" class="btn btn-lg btn-info btn-gle btn-block">Google</a>
+								</div>
+							</div>
+							<!-- row end -->
+							<div class="login-or">
+								<hr class="hr-or">
+								<span class="span-or">ou</span>
+							</div>
+
+							<form method="post">
+                                  {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                  {% endif %}
+								<div class="form-group">
+									<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Entrez votre email" required autofocus>
+								</div>
+								<div class="form-group">
+									<a class="pull-right" href="{{path('app_forgot_password_request')}}">Mot de passe oublié?</a>
+									<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Entrez votre mot de passe" required>
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								</div>
+								<div class="checkbox pull-right">
+									<label>
+										<input type="checkbox" name="_remember_me">
+										Souviens-toi de moi
+                                    </label>
+								</div>
+								<div class="d-flex ts-submit-btn links">
+									<button type="submit" class="btn btn-lg btn-primary">Se connecter</button>
+								</div>
+							</form>
+						</div>
+					</div><!-- grid box end -->
+				</div>
+				<!-- col end-->
+
+			</div>
+
+
+<!--Fin de code de la partie connexion-->
+
+
+
+
+
+    
+
+    
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        
+    #}
+{% endblock %}

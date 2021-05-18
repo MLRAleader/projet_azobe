@@ -139,17 +139,16 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="GroupeActivite")
-     * @Assert\NotBlank()
      */
     private $groupe_activite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ThemeActivite::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=ThemeActivite::class,  inversedBy="users")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $themeActivite;
 
-    
+   
 
     public function __construct()
     {

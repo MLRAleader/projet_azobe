@@ -1,12 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
-
-{% block body %}
-   
-    <!--Code tu template-->
-    <br>
-    <div class="row">
+<div class="row">
     <div class="col-lg-8 mx-auto">
 					<div class="ts-grid-box" id="ts-grid-box">
 						<div class="reg-page">
@@ -14,10 +6,6 @@
 								Azobe
 								<i class="fa fa-edit blue-color" aria-hidden="true"></i>
 							</h3>
-							 {% for flashError in app.flashes('verify_email_error') %}
-       							 <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    						 {% endfor %}
-    
 						 {{ form_start(registrationForm) }}
 								<p class="text-right pt-3 pb-4 blue-color">Tous les champs sont obligatoires (*)</p>
 								<div class="form-row">
@@ -42,15 +30,24 @@
 
 								<div class="form-row">
 									<div class="col-lg-4 form-group">
-									 {{form_row(registrationForm.date_creation)}}
+										<label class="control-label" for="datepicker">Date de création<span style="color: red;">*</span></label>
+										<div class="input-group">
+                                          {{form_row(registrationForm.date_creation)}}
+										</div>
 									</div>
 									<!-- form-group end.// -->
 
 									<div class="col-lg-3 form-group">
-                                         {{form_row(registrationForm.numero_recepisse)}}
+										<div class="input-group">
+											 {{form_row(registrationForm.numero_recepisse)}}
+										</div>
 									</div>
 									<!-- form-group end.// -->
 									<div class="col-lg-5 form-group">
+										<label class="control-label">Recepissé <span style="color: red;">*</span></label>
+										<div class="input-group">
+                                        {#{{form_row(registrationForm.recepicee)}}#}
+										</div>
 										<!-- <input type="file" class="file" /> -->
 									</div>
 									<!-- form-group end.// -->
@@ -116,48 +113,65 @@
                                
                                 <div class="form-row">
 									<div class="col-lg-4 form-group">
-										{{form_row(registrationForm.groupe_activite)}}
+										
+										<div class="input-group">
+                                        {{form_row(registrationForm.groupe_activite)}}
+										</div>
 									</div>
 									<!-- form-group end.// -->
 
 									<div class="col-lg-3 form-group">
-										 {{form_row(registrationForm.site_internet)}}
+										
+										<div class="input-group">
+											 {{form_row(registrationForm.site_internet)}}
+										</div>
 									</div>
 									<!-- form-group end.// -->
 									<div class="col-lg-5 form-group">
-										 {{form_row(registrationForm.lien_facebook)}}
+										
+										<div class="input-group">
+                                         {{form_row(registrationForm.lien_facebook)}}
+										</div>
 										<!-- <input type="file" class="file" /> -->
 									</div>
 									<!-- form-group end.// -->
 								</div>
 
 								<div class="form-row">
-									<div class="col-md">
+									<div class="form-group col-md-6">
 										 {{ form_row(registrationForm.plainPassword, {
                                             label: 'Password'
                                          }) }}
 									</div>
-									
+									<!-- form-group end.// -->
+									{# <div class="form-group col-md-6">
+										<label>Confirmez le mot de passe</label>
+										<input class="form-control" type="password" required="">
+									</div> #}
+									<!-- form-group end.// -->
 								</div>
 								<!-- form-row.// -->
 
-								<!--<div class="form-group">
-									<div class="maxl">
-										<label class="radio inline">
-											
-										</label>
-									</div>
-								</div>-->
 								<div class="form-group">
 									<div class="maxl">
-										<label class="radio inline ml-5">
+										<label class="radio inline">
 											 {{ form_row(registrationForm.agreeTerms) }}
 											<!-- checked -->
-											<span class="inscription_terms"> J'ai lu et j'accepte <a href="{{path('cgu_conditions')}}" target="_blank">les
-													Conditions Générales d'Utilisation</a> et <a href="{{path('cgu_conditions')}}" target="_blank">la
+											<span class="inscription_terms"> J'ai lu et j'accepte <a href="">les
+													Conditions Générales d'Utilisation</a> et <a href="">la
 													Politique de
 													Protection des Données Personnelles.</a> 
                                             </span>
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="maxl">
+										<label class="radio inline">
+											<input type="checkbox" name="acceptterms" value="readAndAccept" id="checkboxReadAndAcceptTerms">
+											<span class="inscription_terms">Tenez-moi au courant des nouveaux appel
+												à
+												projets.</span>
 										</label>
 									</div>
 								</div>
@@ -167,7 +181,7 @@
 								</div> <!-- form-group// -->
 							 {{ form_end(registrationForm) }}
 							<div class="border-top card-body text-center inscription_term ">Avez-vous déjà un
-								compte? <a href="{{path('app_login')}}" class="blue-color">Se connecter</a>
+								compte? <a href="connexion.html" class="blue-color">Se connecter</a>
 							</div>
 						</div> <!-- card.// -->
 
@@ -175,11 +189,50 @@
 					<!-- grid box end -->
 	</div>
 </div>
-    
+ {{ form_row(registrationForm.agreeTerms) }}
+ <input type="checkbox" name="acceptterms" value="readAndAccept" id="checkboxReadAndAcceptTerms">
+											<span class="inscription_terms">Tenez-moi au courant des nouveaux appel
+												à
+												projets.
+											</span>
 
-    {% block script %}
-        <script>
-        
-        </script>
-    {% endblock %}
-{% endblock %}
+
+
+
+
+
+
+
+			<div class="container">
+				<div class="col-sm-12">
+
+					<div class="bs-calltoaction bs-calltoaction-info">
+						<div class="row">
+
+							<div class="col-lg-12 call_action">
+								<div class="cta text-light">
+									<div class="row">
+										<div class="col-md-8 cta-contents cta ">
+											<h3 class="h3 mt-3">Vous êtes un acteur de la société civile ?</h3>
+											<div class="cta-desc">
+												<p class="text-white">Rejoignez-nous dès maintenant en inscrivant votre
+													Organisation: Associations, <br> ONG, Coopératives, Fondations...
+												</p>
+											</div>
+										</div>
+										<div class="col-md-4 pt-2 links">
+											<a href="{{path('app_register')}}"
+												class="items-center justify-center btn btn-primary">
+												<span class="mb-4 font-bold span_size blue-color">Inscrivez
+													votre organisation</span> <br>
+												<small class="font-light span blue-color">sur AZOBE</small>
+											</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

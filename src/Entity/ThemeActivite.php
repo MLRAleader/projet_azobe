@@ -37,11 +37,17 @@ class ThemeActivite
      */
     private $groupeActivite;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Activite::class, mappedBy="themeActivite")
+     */
+    private $activites;
+
    
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->activites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -108,6 +114,36 @@ class ThemeActivite
     public function setGroupeActivite(?GroupeActivite $groupeActivite): self
     {
         $this->groupeActivite = $groupeActivite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Activite[]
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activite $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites[] = $activite;
+            $activite->setThemeActivite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activite $activite): self
+    {
+        if ($this->activites->removeElement($activite)) {
+            // set the owning side to null (unless already changed)
+            if ($activite->getThemeActivite() === $this) {
+                $activite->setThemeActivite(null);
+            }
+        }
 
         return $this;
     }
