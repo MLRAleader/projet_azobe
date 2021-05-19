@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activite;
+use App\Entity\Article;
 use App\Entity\GroupeActivite;
 use App\Entity\ThemeActivite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -33,6 +34,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Groupe d\'activité', 'fas fa-layer-group', GroupeActivite::class);
         yield MenuItem::linkToCrud('Thème d\'activité', 'fas fa-list', ThemeActivite::class);
         yield MenuItem::linkToCrud('Liste d\'activité', 'fas fa-list', Activite::class);
+        yield MenuItem::linkToCrud('Liste d\'article', 'fas fa-blog', Article::class);
         
     }
 }
