@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -148,11 +149,17 @@ class User implements UserInterface
      */
     private $themeActivite;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ReviewsArticle::class, mappedBy="user")
+     */
+    private $reviewsArticles;
+
    
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->reviewsArticles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -493,6 +500,36 @@ class User implements UserInterface
     public function setThemeActivite(?ThemeActivite $themeActivite): self
     {
         $this->themeActivite = $themeActivite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReviewsArticle[]
+     */
+    public function getReviewsArticles(): Collection
+    {
+        return $this->reviewsArticles;
+    }
+
+    public function addReviewsArticle(ReviewsArticle $reviewsArticle): self
+    {
+        if (!$this->reviewsArticles->contains($reviewsArticle)) {
+            $this->reviewsArticles[] = $reviewsArticle;
+            $reviewsArticle->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReviewsArticle(ReviewsArticle $reviewsArticle): self
+    {
+        if ($this->reviewsArticles->removeElement($reviewsArticle)) {
+            // set the owning side to null (unless already changed)
+            if ($reviewsArticle->getUser() === $this) {
+                $reviewsArticle->setUser(null);
+            }
+        }
 
         return $this;
     }
