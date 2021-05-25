@@ -1,0 +1,36 @@
+
+<div class="item" style="background-image:url(assets/uploads/articles/{{article.image}})">
+  <a class="post-cat ts-orange-bg" href="#" id="post-cat">A LA UNE</a>
+  <div class="overlay-post-content">
+    <div class="post-content">
+      <h3 class="post-title lg">
+        <a href="single-post-9.html">{{article.title}}</a>
+      </h3>
+      <p>
+        {{article.description |striptags}}
+      </p>
+      <ul class="post-meta-info font-weight-bold">
+        <li class="author" id="author">
+          <a href="apropos.html">
+            <img src="images/avater/avatar_4.png" alt="">
+            © CRSC AZOBE
+          </a>
+        </li>
+        <li>
+          <i class="fa fa-clock-o"></i>
+          {{article.createdAt |date('d-m-Y')}}
+        </li>
+        <li class="text-white">
+          <i class="fa fa-eye mx-2"></i>
+          {% for reviews in article.reviewsArticles %}
+            {{article.reviewsArticles}}
+          {% endfor %}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--/ Featured post end -->
+</div>
+
+
+		

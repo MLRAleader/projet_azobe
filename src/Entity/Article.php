@@ -40,11 +40,6 @@ class Article
     private $createdAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=TagsArticle::class, mappedBy="article")
-     */
-    private $tagsArticles;
-
-    /**
      * @ORM\OneToMany(targetEntity=RelatedArticle::class, mappedBy="article")
      */
     private $relatedArticles;
@@ -54,11 +49,22 @@ class Article
      */
     private $reviewsArticles;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tags;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->tagsArticles = new ArrayCollection();
         $this->relatedArticles = new ArrayCollection();
         $this->reviewsArticles = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -114,32 +120,6 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|TagsArticle[]
-     */
-    public function getTagsArticles(): Collection
-    {
-        return $this->tagsArticles;
-    }
-
-    public function addTagsArticle(TagsArticle $tagsArticle): self
-    {
-        if (!$this->tagsArticles->contains($tagsArticle)) {
-            $this->tagsArticles[] = $tagsArticle;
-            $tagsArticle->addArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTagsArticle(TagsArticle $tagsArticle): self
-    {
-        if ($this->tagsArticles->removeElement($tagsArticle)) {
-            $tagsArticle->removeArticle($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|RelatedArticle[]
@@ -204,5 +184,29 @@ class Article
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function getTags(): ?string
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?string $tags): self
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }
