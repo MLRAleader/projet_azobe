@@ -1,0 +1,35 @@
+<div class="widgets ts-grid-box  widgets-populer-post">
+  <h3 class="widget-title">Dans la même rubrique</h3>
+  <div class="ts-overlay">
+    <div class="item">
+      <div class="ts-post-thumb">
+        <a class="post-cat" id="post-cat" href="#">A LA UNE</a>
+        <a href="{{path('article_details', {'slug':article.slug})}}">
+          <img class="img-fluid" src="/assets/uploads/articles/{{article.image}}">
+        </a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a href="single-post-3.html">
+            Rencontre avec les lauréats de l’appel à projet du centre de ressources AZOBE
+          </a>
+        </h3>
+        <ul class="post-meta-info d-flex">
+          <li>
+            <i class="fa fa-clock-o"></i>
+            {{article.createdAt |date('d-m-Y')}}
+          </li>
+          <li>
+            <a href="category-1.html#" class="color-grey">
+              <i class="fa fa-comments"></i>
+              0
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- post content end-->
+
+</div>

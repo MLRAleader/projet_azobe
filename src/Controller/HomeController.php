@@ -22,4 +22,17 @@ class HomeController extends AbstractController
             'articles' => $articles,
         ]);
     }
+
+    /**
+     * @Route("article/{slug}", name="article_details")
+     */
+    public function show(?Article $article): Response{
+        if(!$article){
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render("home/single_article.html.twig", [
+            'article'=>$article
+        ]);
+    }
 }

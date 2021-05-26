@@ -4,7 +4,7 @@
   <div class="overlay-post-content">
     <div class="post-content">
       <h3 class="post-title lg">
-        <a href="single-post-9.html">{{article.title}}</a>
+        <a href="{{path('article_details', {'slug':article.slug})}}">{{article.title}}</a>
       </h3>
       <p>
         {{article.description |striptags}}
