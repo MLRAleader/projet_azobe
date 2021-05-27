@@ -3,10 +3,28 @@
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+<div class="row">
+  <div class="col-lg-5 mx-auto">
+    <h1>Saisissez le nouveau mot de passe</h1>
+    <div class="ts-grid-box" id="ts-grid-box">
+      <div class="message-flash"></div>
+      <div class="login-page">
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+        <form method="post">
+          <div class="form-group">
+
+            {{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            <button class="btn btn-primary">Réinitialisez le mot de passe</button>
+            {{ form_end(resetForm) }}
+          </div>
+          
+        </form>
+      </div>
+    </div>
+    <!-- grid box end -->
+  </div>
+  <!-- col end-->
+
+</div>
 {% endblock %}
