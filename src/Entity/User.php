@@ -480,12 +480,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getGroupeActivite(): ?string
+    public function getGroupeActivite(): ?GroupeActivite
     {
         return $this->groupe_activite;
     }
 
-    public function setGroupeActivite(string $groupe_activite): self
+    public function setGroupeActivite(GroupeActivite $groupe_activite): self
     {
         $this->groupe_activite = $groupe_activite;
 

@@ -35,18 +35,18 @@ class RegistrationFormType extends AbstractType
             ->add('lastname',TextType::class,array('attr'=>array('placeholder'=>'Le nom du représentant')))
             ->add('firstname', TextType::class,array('attr'=>array('placeholder'=>'Le prénom du représentant')))
             ->add('phone_number',TextType::class,array('attr'=>array('placeholder'=>'Le numéro de téléphone 1 du représentant')))
-            ->add('phone_number2',TextType::class,array('attr'=>array('placeholder'=>'Le numéro de téléphone 2 du réprésentant')))
-            ->add('mail_contact2',EmailType::class, [
+            ->add('phone_number2',TextType::class,['required'=>false],array('attr'=>array('placeholder'=>'Le numéro de téléphone 2 du réprésentant')))
+            ->add('mail_contact2',EmailType::class,['required'=>false],[
                 'attr'=>[
-                    'placeholder'=>'Votre couriel électronique 2'
+                    'placeholder'=>'Votre couriel électronique 2',
                 ]
             ])
             ->add('social_objet',TextType::class,array('attr'=>array('placeholder'=>'L\'objet social de votre organisation')))
             ->add('description_activite',TextType::class,array('attr'=>array('placeholder'=>'La description précise de votre activité')))
             ->add('groupe_activite', EntityType::class,[
-                'class'=>'App\Entity\GroupeActivite',
+                'class'=>GroupeActivite::class,
                 'placeholder'=>'Sélectionner un groupe d\'activité',
-                'mapped'=> false,
+                'mapped'=> true,
                 'required'=>true    
 
             ])
@@ -58,8 +58,8 @@ class RegistrationFormType extends AbstractType
             ->add('numero_recepisse',TextType::class,array('attr'=>array('placeholder'=>'Le numéro de votre récépissé')))
             ->add('date_creation',DateType::class,array('label'=>'Date de création'))
             ->add('adresse',TextType::class,array('attr'=>array('placeholder'=>'La ville de votre siège')))
-            ->add('site_internet',TextType::class,array('attr'=>array('placeholder'=>'Le lien de votre site internet')))
-            ->add('lien_facebook',TextType::class,array('attr'=>array('placeholder'=>'Le lien facebook de votre page')))
+            ->add('site_internet',TextType::class,['required'=>false],array('attr'=>array('placeholder'=>'Le lien de votre site internet')))
+            ->add('lien_facebook',TextType::class,['required'=>false],array('attr'=>array('placeholder'=>'Le lien facebook de votre page')))
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

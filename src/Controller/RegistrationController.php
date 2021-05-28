@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\StatutJuridique;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
@@ -49,12 +48,19 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            //Ajout du message flash après l'inscription de l'utilisateur.
+            $this->addFlash(
+                'info',
+                'Votre inscription c\'est passé avec succès. Vous êtes désormais dans l\'annuaire des artisans
+                . Vous pouvez désormer se connecter et profiter de nos activités.'
+            );
+
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('azobe.crsc@gmail.com', 'Azobe Administration'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Confirmation d\'adresse mail.')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
