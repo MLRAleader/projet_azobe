@@ -50,14 +50,14 @@ class RegistrationFormType extends AbstractType
                 'required'=>true    
 
             ])
-            ->add('denomination', TextType::class,array('attr'=>array('placeholder'=>'Le nom de votre organisation')))
+            ->add('denomination', TextType::class,array('attr'=>array('placeholder'=>'Le nom de votre organisation','class' =>'text-uppercase')))
             ->add('statut_juridique',StatutJuridiqueFormType::class)
-            ->add('ville',TextType::class,array('attr'=>array('placeholder'=>'La ville de votre siège')))
+            ->add('ville',TextType::class,array('attr'=>array('placeholder'=>'La ville de votre siège','class' =>'text-uppercase')))
             ->add('province', ProvinceFormType::class)
-            ->add('sigle',TextType::class,array('attr'=>array('placeholder'=>'Une abréviation de votre organisation')))
+            ->add('sigle',TextType::class,array('attr'=>array('placeholder'=>'Votre abréviation','class' =>'text-uppercase')))
             ->add('numero_recepisse',TextType::class,array('attr'=>array('placeholder'=>'Le numéro de votre récépissé')))
             ->add('date_creation',DateType::class,array('label'=>'Date de création'))
-            ->add('adresse',TextType::class,array('attr'=>array('placeholder'=>'La ville de votre siège')))
+            ->add('adresse',TextType::class,array('attr'=>array('placeholder'=>'Votre localisation','class' =>'text-uppercase')))
             ->add('site_internet',TextType::class,['required'=>false],array('attr'=>array('placeholder'=>'Le lien de votre site internet')))
             ->add('lien_facebook',TextType::class,['required'=>false],array('attr'=>array('placeholder'=>'Le lien facebook de votre page')))
             ->add('agreeTerms', CheckboxType::class, [

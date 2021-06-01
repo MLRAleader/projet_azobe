@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activite;
+use App\Entity\AppelOffre;
+use App\Entity\AppelProjet;
+use App\Entity\Appels;
 use App\Entity\Article;
 use App\Entity\GroupeActivite;
 use App\Entity\ThemeActivite;
@@ -35,6 +38,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Thème d\'activité', 'fas fa-list', ThemeActivite::class);
         yield MenuItem::linkToCrud('Liste d\'activité', 'fas fa-list', Activite::class);
         yield MenuItem::linkToCrud('Liste d\'article', 'fas fa-blog', Article::class);
+        yield MenuItem::linkToCrud('Liste des appels', 'fas fa-bullhorn', Appels::class);
+        yield MenuItem::linkToCrud('Liste des appels d\'offres', 'fas fa-bullhorn', AppelOffre::class);
+        
         
     }
 }

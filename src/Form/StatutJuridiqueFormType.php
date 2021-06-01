@@ -15,7 +15,8 @@ class StatutJuridiqueFormType extends AbstractType
                 'COOPERATIVE (SCOOPS)'=>'COOPERATIVE (SCOOPS)',
                 'COOPERATIVE (SCOOP-CA)'=>'COOPERATIVE (SCOOPS)',
                 'FONDATION'=>'COOPERATIVE (SCOOPS)',	
-                'FEDERATION'=>'COOPERATIVE (SCOOPS)'
+                'FEDERATION'=>'COOPERATIVE (SCOOPS)',
+                'AUTRE'     =>'AUTRE'
             ],
         ]);
     }
