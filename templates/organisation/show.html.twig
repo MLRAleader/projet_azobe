@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organisation{% endblock %}
+
+{% block body %}
+    <h1>Organisation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ organisation.id }}</td>
+            </tr>
+            <tr>
+                <th>Denomination</th>
+                <td>{{ organisation.denomination }}</td>
+            </tr>
+            <tr>
+                <th>Sigle</th>
+                <td>{{ organisation.sigle }}</td>
+            </tr>
+            <tr>
+                <th>Statut_juridique</th>
+                <td>{{ organisation.statutJuridique }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ organisation.adresse }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ organisation.createdAt ? organisation.createdAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Numero_recepicee</th>
+                <td>{{ organisation.numeroRecepicee }}</td>
+            </tr>
+            <tr>
+                <th>Province</th>
+                <td>{{ organisation.province }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ organisation.ville }}</td>
+            </tr>
+            <tr>
+                <th>Objet_social</th>
+                <td>{{ organisation.objetSocial }}</td>
+            </tr>
+            <tr>
+                <th>Description_activite</th>
+                <td>{{ organisation.descriptionActivite }}</td>
+            </tr>
+            <tr>
+                <th>Site_internet</th>
+                <td>{{ organisation.siteInternet }}</td>
+            </tr>
+            <tr>
+                <th>Lien_facebook</th>
+                <td>{{ organisation.lienFacebook }}</td>
+            </tr>
+            <tr>
+                <th>Numero_telephone2</th>
+                <td>{{ organisation.numeroTelephone2 }}</td>
+            </tr>
+            <tr>
+                <th>Email_organisation</th>
+                <td>{{ organisation.emailOrganisation }}</td>
+            </tr>
+            <tr>
+                <th>Numero_telephone1</th>
+                <td>{{ organisation.numeroTelephone1 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('organisation_index') }}">back to list</a>
+
+    <a href="{{ path('organisation_edit', {'id': organisation.id}) }}">edit</a>
+
+    {{ include('organisation/_delete_form.html.twig') }}
+{% endblock %}

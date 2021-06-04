@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organisation index{% endblock %}
+
+{% block body %}
+    <h1>Organisation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Denomination</th>
+                <th>Sigle</th>
+                <th>Statut_juridique</th>
+                <th>Adresse</th>
+                <th>CreatedAt</th>
+                <th>Numero_recepicee</th>
+                <th>Province</th>
+                <th>Ville</th>
+                <th>Objet_social</th>
+                <th>Description_activite</th>
+                <th>Site_internet</th>
+                <th>Lien_facebook</th>
+                <th>Numero_telephone2</th>
+                <th>Email_organisation</th>
+                <th>Numero_telephone1</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for organisation in organisations %}
+            <tr>
+                <td>{{ organisation.id }}</td>
+                <td>{{ organisation.denomination }}</td>
+                <td>{{ organisation.sigle }}</td>
+                <td>{{ organisation.statutJuridique }}</td>
+                <td>{{ organisation.adresse }}</td>
+                <td>{{ organisation.createdAt ? organisation.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ organisation.numeroRecepicee }}</td>
+                <td>{{ organisation.province }}</td>
+                <td>{{ organisation.ville }}</td>
+                <td>{{ organisation.objetSocial }}</td>
+                <td>{{ organisation.descriptionActivite }}</td>
+                <td>{{ organisation.siteInternet }}</td>
+                <td>{{ organisation.lienFacebook }}</td>
+                <td>{{ organisation.numeroTelephone2 }}</td>
+                <td>{{ organisation.emailOrganisation }}</td>
+                <td>{{ organisation.numeroTelephone1 }}</td>
+                <td>
+                    <a href="{{ path('organisation_show', {'id': organisation.id}) }}">show</a>
+                    <a href="{{ path('organisation_edit', {'id': organisation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('organisation_new') }}">Create new</a>
+{% endblock %}

@@ -1,10 +1,10 @@
- {{ form_start(registrationForm) }}
-						 <h4 class="log-sign-title mb-25 blue-color text-center h1">
-						 	Information liées à votre organisation
-							 <i class="fa fa-edit blue-color" aria-hidden="true"></i>
-						 </h4>
-								<p class="text-right pt-3 pb-4 blue-color">Tous les champs sont obligatoires (*)</p>
-								{# <div class="form-row">
+{{ form_start(registrationForm) }}
+<h4 class="log-sign-title mb-25 blue-color text-center h1">
+  Information liées à votre organisation
+  <i class="fa fa-edit blue-color" aria-hidden="true"></i>
+</h4>
+<p class="text-right pt-3 pb-4 blue-color">Tous les champs sont obligatoires (*)</p>
+{# <div class="form-row">
 									<div class="col-lg-6 col-md-4 form-group">
 										{{form_row(registrationForm.denomination,{ 'label': 'Dénomination (*)' })}}
 									</div> <!-- form-group end.// -->
@@ -13,7 +13,7 @@
 									</div>
 									<!-- form-group end.// -->
 								</div> #}
-                                {# <div class="form-row">
+{# <div class="form-row">
 									<div class="col-lg-6 col-md-4 form-group">
 										  {{form_row(registrationForm.statut_juridique, {'label':'Statut Juridique (*)'})}}
 									</div>
@@ -22,7 +22,7 @@
 									</div>
 								</div>
 								 #}
-								{# <div class="form-row">
+{# <div class="form-row">
 									<div class="col-lg-6 col-md-4 form-group">
 										 {{form_row(registrationForm.date_creation, {'label':'Date de création (*)'})}}
 									</div>
@@ -31,7 +31,7 @@
 									</div>
 								</div> #}
 
-								{# <div class="form-row">
+{# <div class="form-row">
 									<div class="form-group col-md-6">
                                           {{form_row(registrationForm.province, {'label':'Province (*)'})}}
 									</div>
@@ -39,9 +39,9 @@
                                          {{form_row(registrationForm.ville, {'label':'Ville (*)'})}}
 									</div>
 								</div> #}
-								<!-- form-row.// -->
+<!-- form-row.// -->
 
-								{# <div class="form-row">
+{# <div class="form-row">
 									<div class="form-group col-md-6">
 										  {{ form_row(registrationForm.lastname, {'label':'Nom (*)'}) }}
 									</div> <!-- form-group end.// -->
@@ -50,9 +50,9 @@
 									</div>
 									<!-- form-group end.// -->
 								</div> #}
-								<!-- form-row.// -->
+<!-- form-row.// -->
 
-								{# <div class="form-row">
+{# <div class="form-row">
 									<div class="form-group col-md-6">
                                         {{form_row(registrationForm.phone_number, {'label':'Téléphone 1 (*)'})}}
 									</div>
@@ -60,7 +60,7 @@
 										{{form_row(registrationForm.phone_number2, {'label':'Téléphone 2 (Optionnel)'})}}
 									</div>
 								</div> #}
-								<!-- form-row.// -->
+<!-- form-row.// -->
 {# 
                                 <div class="form-row">
 									<div class="form-group col-md-6">
@@ -71,7 +71,7 @@
 									</div>
 								</div> #}
 
-                                {# <div class="form-row">
+{# <div class="form-row">
 									<div class="form-group col-md-6">     
                                         {{form_row(registrationForm.social_objet,{'label':'Objet Social (*)'})}}
 									</div>
@@ -79,8 +79,8 @@
 										{{form_row(registrationForm.description_activite,{'label':'Description de l\'activité'})}}
 								    </div>
 								</div> #}
-                               
-                                {# <div class="form-row">
+
+{# <div class="form-row">
 									<div class="col-lg-4 form-group">
 										{{form_row(registrationForm.groupe_activite,{'label':'Groupe d\'activité (*)'})}}
 									</div>
@@ -92,27 +92,187 @@
 									</div>
 								</div> #}
 
-								{# <div class="form-row">
+{# <div class="form-row">
 									<div class="col-md">
 										 {{ form_row(registrationForm.plainPassword,{'label':'Mot de passe (*)'}) }}
 									</div>
 								</div> #}
-								
-								{#  #}
+
+{#  #}
 <div class="form-group">
-									<div class="maxl">
-										<label class="radio inline ml-5">
-											 {{ form_row(registrationForm.agreeTerms) }}
-											<!-- checked -->
-											<span class="inscription_terms"> J'ai lu et j'accepte <a href="{{path('cgu_conditions')}}" target="_blank">les
-													Conditions Générales d'Utilisation</a> et <a href="{{path('cgu_conditions')}}" target="_blank">la
-													Politique de
-													Protection des Données Personnelles.</a> 
-                                            </span>
-										</label>
-									</div>
-								</div>
-								<div class="form-group text-center links">
-                                      <button type="submit" class="btn">Register</button>
-								</div> <!-- form-group// -->
-							 {{ form_end(registrationForm) }}
+  <div class="maxl">
+    <label class="radio inline ml-5">
+      {{ form_row(registrationForm.agreeTerms) }}
+      <!-- checked -->
+      <span class="inscription_terms">
+        J'ai lu et j'accepte
+        <a href="{{path('cgu_conditions')}}" target="_blank">les Conditions Générales d'Utilisation</a>
+        et
+        <a href="{{path('cgu_conditions')}}" target="_blank">la Politique de Protection des Données Personnelles.</a>
+      </span>
+    </label>
+  </div>
+</div>
+<div class="form-group text-center links">
+  <button type="submit" class="btn">Register</button>
+</div>
+<!-- form-group// -->
+{{ form_end(registrationForm) }}
+
+//Code du formulaire organiser autrement
+<div class="row">
+  <div class="col-lg-11 mx-auto">
+    <div class="ts-grid-box" id="ts-grid-box">
+      <div class="reg-page">
+        <!--Zone du formulaire-->
+
+        {{ form_start(registrationForm) }}
+        <p class="text-right pt-3 pb-4 blue-color">Tous les champs sont obligatoires (*)</p>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title log-sign-title mb-25 blue-color text-center">Information liées à votre organisation</h5>
+                <!--Zone où j'insère les champs du formulaire-->
+
+                <!--Dénomination et Sigle-->
+                <div class="form-row">
+                  <div class="col-lg-6 col-md-4 form-group">
+                    {{form_row(registrationForm.denomination,{ 'label': 'Dénomination (*)' })}}
+                  </div>
+                  <div class="col-lg-6 col-md-4 form-group">
+                    {{form_row(registrationForm.sigle, {'label':'Sigle'})}}
+                  </div>
+                </div>
+                <!--Statut Juridique et Siège-->
+                <div class="form-row">
+                  <div class="col-lg-6 col-md-4 form-group">
+                    {{form_row(registrationForm.statut_juridique, {'label':'Statut Juridique (*)'})}}
+                  </div>
+                  <div id="autre-statut-container" style="display: none;" class="col-lg-6 col-md-4 form-group">
+                    {{form_row(registrationForm.autre_statut_juridique, {'label':'Autre Statut Juridique (*)'})}}
+                  </div>
+                  <div class="col-lg-6 col-md-4 form-group">
+                    {{form_row(registrationForm.adresse,{ 'label': 'Adresse (*)' })}}
+                  </div>
+                </div>
+                <!--Date de création et Récépissé-->
+                <div class="form-row">
+                  <div class="col-lg-6 form-group">
+                    <style>
+                      .date-font {
+                        font-size: 15px;
+                      }
+                    </style>
+                    {{form_row(registrationForm.date_creation, {'label_attr': {'class': 'date-font'}})}}
+                  </div>
+                  <div class="col-lg-6 form-group">
+                    {{form_row(registrationForm.numero_recepisse, {'label':'Numéro de récépicée (*)'})}}
+                  </div>
+                </div>
+                <!--Province et ville-->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.province, {'label':'Province (*)'})}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.ville, {'label':'Ville (*)'})}}
+                  </div>
+                </div>
+                <!--Objet social et Description activité-->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.social_objet,{'label':'Objet Social (*)'})}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.description_activite,{'label':'Description de l\'activité'})}}
+                                     </div>
+                                 </div>
+                                 <!--Groupe d'activité, lien facebook et site-->
+                                 <div class="form-row">
+                                     <div class="col-lg-4 form-group">
+                                         {{form_row(registrationForm.groupe_activite,{'label':'Groupe d\'activité (*)'})}}
+                                     </div>
+                                     <div class="col-lg-3 form-group">
+                                         {{form_row(registrationForm.site_internet,{'label':'Lien Facebook'})}}
+                                     </div>
+                                     <div class="col-lg-5 form-group">
+                                         {{form_row(registrationForm.lien_facebook,{'label':'Lien site internet'})}}
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-sm-6">
+                         <div class="card">
+                             <div class="card-body">
+                                 <h5 class="card-title log-sign-title mb-25 blue-color text-center">Information liées au représentant</h5>
+                                 <!--Zone où j'insère les champs du formulaire-->
+
+                                 <!--Nom et Prénom du représentant.-->
+                                 <div class="form-row">
+                                     <div class="form-group col-md-6">
+                                         {{ form_row(registrationForm.lastname, {'label':'Nom (*)'}) }}
+                  </div>
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.firstname, {'label':'Prénom (*)'})}}
+                  </div>
+                </div>
+                <!--Téléphone un téléphone deux-->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.phone_number, {'label':'Téléphone 1 (*)'})}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.phone_number2, {'label':'Téléphone 2'})}}
+                  </div>
+                </div>
+                <!--Email1 et Email 2-->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    {{ form_row(registrationForm.email,{'label':'Email 1 (*)'}) }}
+                  </div>
+                  <div class="form-group col-md-6">
+                    {{form_row(registrationForm.mail_contact2, {'label':'Email 2'})}}
+                  </div>
+                </div>
+                <!--Password-->
+                <div class="form-row">
+                  <div class="col-md">
+                    {{ form_row(registrationForm.plainPassword,{'label':'Mot de passe (*)'}) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Terme et Contrat-->
+        <div class="form-group text-center">
+          <div class="maxl">
+            <label class="radio inline ml-5">
+              {{ form_row(registrationForm.agreeTerms) }}
+              <!-- checked -->
+              <span class="inscription_terms">
+                J'ai lu et j'accepte
+                <a href="{{path('cgu_conditions')}}" target="_blank">les Conditions Générales d'Utilisation</a>
+                et
+                <a href="{{path('cgu_conditions')}}" target="_blank">la Politique de Protection des Données Personnelles.</a>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group text-center links">
+          <button type="submit" class="btn btn-primary">
+            S'inscrire à l'annuaire
+          </button>
+        </div>
+        {{ form_end(registrationForm) }}
+
+        <div class="border-top card-body text-center inscription_term ">Avez-vous déjà un compte?
+          <a href="{{path('app_login')}}" class="blue-color">Se connecter</a>
+        </div>
+      </div>
+      <!-- card.// -->
+
+    </div>
+  </div>

@@ -1,0 +1,22 @@
+{# Zone du formulaire #}
+<div class="row">
+  <div class="mx-auto">
+    <div class="ts-grid-box" id="ts-grid-box">
+
+      <p class="text-left pt-2 pb-1 blue-color">Tous les champs sont obligatoires (*)</p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title log-sign-title mb-25 blue-color text-center">Informations liées à votre organisation</h5>
+          <!--Zone où j'insère les champs du formulaire-->
+          {{ form_start(form) }}
+          {{ form_widget(form) }}
+          <div class="form-group text-center links">
+          <button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+          </div>
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+    <!-- grid box end -->
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Organisation{% endblock %}
+
+{% block body %}
+  <h6 class="log-sign-title mb-25 blue-color text-center h1">
+    J'enregistre mon organisation
+    <i class="fa fa-edit blue-color" aria-hidden="true"></i>
+  </h6>
+
+  {{ include('organisation/_form.html.twig') }}
+
+  {# <a href="{{ path('organisation_index') }}">back to list</a> #}
+{% endblock %}
