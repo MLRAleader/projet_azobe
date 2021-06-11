@@ -1,3 +1,4 @@
+{# Zone du formulaire _form.html.twig#}
 <div class="row">
   <div class="mx-auto">
     <div class="ts-grid-box" id="ts-grid-box">
@@ -20,3 +21,21 @@
     <!-- grid box end -->
   </div>
 </div>
+
+
+{# Formulaire organisation_new #}
+{% extends 'base.html.twig' %}
+
+{% block title %}New Organisation{% endblock %}
+
+{% block body %}
+  <h6 class="log-sign-title mb-25 blue-color text-center h1">
+    J'enregistre mon organisation
+    <i class="fa fa-edit blue-color" aria-hidden="true"></i>
+  </h6>
+
+  {{ include('organisation/_form.html.twig') }}
+
+  {# <a href="{{ path('organisation_index') }}">back to list</a> #}
+{% endblock %}
+

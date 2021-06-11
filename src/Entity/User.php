@@ -62,12 +62,18 @@ class User implements UserInterface
 
     private $passwordConfirm;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Organisation::class, mappedBy="user",cascade={"persist"})
+     */
+    private $organisation;
+
    
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->reviewsArticles = new ArrayCollection();
+        $this->organisation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,7 +246,34 @@ class User implements UserInterface
         return $this;
     }
 
-    
+    /**
+     * @return Collection|Organisation[]
+     */
+    public function getOrganisation(): Collection
+    {
+        return $this->organisation;
+    }
 
-    
+    public function addOrganisation(Organisation $organisation): self
+    {
+        if (!$this->organisation->contains($organisation)) {
+            $this->organisation[] = $organisation;
+            $organisation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrganisation(Organisation $organisation): self
+    {
+        if ($this->organisation->removeElement($organisation)) {
+            // set the owning side to null (unless already changed)
+            if ($organisation->getUser() === $this) {
+                $organisation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

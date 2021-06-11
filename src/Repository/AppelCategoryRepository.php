@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Appels;
+use App\Entity\AppelCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Appels|null find($id, $lockMode = null, $lockVersion = null)
- * @method Appels|null findOneBy(array $criteria, array $orderBy = null)
- * @method Appels[]    findAll()
- * @method Appels[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AppelCategory|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AppelCategory|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AppelCategory[]    findAll()
+ * @method AppelCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AppelsRepository extends ServiceEntityRepository
+class AppelCategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Appels::class);
+        parent::__construct($registry, AppelCategory::class);
     }
 
     // /**
-    //  * @return Appels[] Returns an array of Appels objects
+    //  * @return AppelCategory[] Returns an array of AppelCategory objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AppelsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Appels
+    public function findOneBySomeField($value): ?AppelCategory
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\AppelOffre;
+use App\Entity\Appel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method AppelOffre|null find($id, $lockMode = null, $lockVersion = null)
- * @method AppelOffre|null findOneBy(array $criteria, array $orderBy = null)
- * @method AppelOffre[]    findAll()
- * @method AppelOffre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Appel|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Appel|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Appel[]    findAll()
+ * @method Appel[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AppelOffreRepository extends ServiceEntityRepository
+class AppelRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AppelOffre::class);
+        parent::__construct($registry, Appel::class);
     }
 
     // /**
-    //  * @return AppelOffre[] Returns an array of AppelOffre objects
+    //  * @return Appel[] Returns an array of Appel objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AppelOffreRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?AppelOffre
+    public function findOneBySomeField($value): ?Appel
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

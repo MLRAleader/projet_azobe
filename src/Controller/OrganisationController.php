@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Organisation;
+use App\Entity\User;
 use App\Form\OrganisationType;
 use App\Repository\OrganisationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,14 +33,17 @@ class OrganisationController extends AbstractController
     {
         $organisation = new Organisation();
         $form = $this->createForm(OrganisationType::class, $organisation);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //Récupération de l'utilisateur.
+            $organisation->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($organisation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('organisation_index');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render('organisation/new.html.twig', [
